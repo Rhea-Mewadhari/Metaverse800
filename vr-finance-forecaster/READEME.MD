@@ -61,3 +61,5 @@ Both frontend and backend server should be up. Navigate to :
 
 
 For the agent functionality create your Grok account and create your .env file in the backend folder. See .env.example for the structure
+
+Access the usage dashboard here: `http://localhost:8080/frontend/usage-dashboard/index.html`
