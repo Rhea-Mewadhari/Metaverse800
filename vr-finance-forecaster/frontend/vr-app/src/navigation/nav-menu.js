@@ -39,6 +39,8 @@
       const camera = this.el.object3D;
       const forward = new THREE.Vector3();
       camera.getWorldDirection(forward);
+      forward.negate(); // this.el.object3D is a plain wrapper, not the real
+                         // THREE.Camera — it lacks Camera's -Z-facing override
       const camPos = new THREE.Vector3();
       camera.getWorldPosition(camPos);
       const panelPos = camPos.clone().addScaledVector(forward, 2);
