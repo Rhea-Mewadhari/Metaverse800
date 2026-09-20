@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>VR Finance Forecaster</title>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    <script src="src/charts/trend-chart.js"></script>
+    <script src="src/charts/forecast-chart.js"></script>
+    <script src="src/charts/monte-carlo-chart.js"></script>
+    <script src="src/charts/volatility-chart.js"></script>
+    <script src="src/charts/correlation-chart.js"></script>
+    <script src="src/navigation/keyboard-look.js"></script>
+    <script src="src/navigation/value-inspector.js"></script>
+    <script src="src/navigation/nav-menu.js"></script>
+    <script src="src/navigation/voice-commands.js"></script>
+    <script src="src/navigation/current-chart-tracker.js"></script>
+    <script src="src/ai-assistant/speech-output.js"></script>
+    <script src="src/ai-assistant/chat-ui.js"></script>
+</head>
+  <body>
+    /*
+    TODO: Menu/welcome page to help user get more oriented on thier first visit.      
+    */
+    <a-scene>
+      <a-entity trend-chart="src: /data/processed/aapl_trend.json; width: 4; height: 2"
+          position="-9 0.5 -3"></a-entity>
+
+      <a-entity forecast-chart="src: /data/processed/aapl_forecast.json; width: 4; height: 2"
+                position="-2 0.5 -3"></a-entity>
+
+      <a-entity monte-carlo-chart="src: /data/processed/aapl_montecarlo.json; width: 4; height: 2; depth: 2"
+                position="5 0.5 -3"></a-entity>
+
+      <a-entity volatility-chart="src: /data/processed/aapl_volatility.json; width: 4; height: 2"
+                position="-9 0.5 -10"></a-entity>
+
+      <a-entity correlation-chart="src: /data/processed/correlation_matrix.json"
+                position="-2 0.5 -10"></a-entity>
+
+      <a-entity light="type: ambient; intensity: 0.6"></a-entity>
+      <a-entity light="type: directional; intensity: 0.6" position="1 3 1"></a-entity>
+      <a-entity camera keyboard-look value-inspector nav-menu voice-commands current-chart-tracker chat-ui wasd-controls="acceleration: 100" position="0 1.6 0">
+      <a-entity cursor="fuse: true; fuseTimeout: 800"
+                raycaster="objects: .nav-button; far: 20"
+                geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.015"
+                material="color: white; shader: flat">
+      </a-entity>
+    </a-entity>
+
+      <a-sky color="#dcdcdc"></a-sky>
+    </a-scene>
+  </body>
+</html>
